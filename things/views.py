@@ -3,13 +3,5 @@ from .models import Thing
 from .forms import ThingForm
 
 def home(request):
-    if request.method == 'POST':
-        form = ThingForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home') 
-    else:
-        form = ThingForm()
-
-    things = Thing.objects.all()
-    return render(request, 'home.html', {'form': form, 'things': things})
+    form = ThingForm()
+    return render(request, 'home.html', {'form': form})
